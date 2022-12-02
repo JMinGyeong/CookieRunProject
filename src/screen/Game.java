@@ -67,13 +67,12 @@ public class Game extends JPanel implements KeyListener {
 				new ImageIcon("img/game/jelly2.png"),
 				new ImageIcon("img/game/jelly3.png"),
 				new ImageIcon("img/game/hppotion.png"),
-				new ImageIcon("img/Objectimg/map1img/effectTest.png"),
+				new ImageIcon("img/game/effectTest.png"),
 				new ImageIcon("img/game/field1.png"),
 				new ImageIcon("img/game/field2.png"),
 				new ImageIcon("img/game/tacle1.png"),
 				new ImageIcon("img/game/tacle2.png"),
-				new ImageIcon("img/game/tacle3.png"),
-				new ImageIcon("img/Objectimg/map1img/tacle4.png"));
+				new ImageIcon("img/game/tacle3.png"));
 
 		
 		jellylist = new java.util.ArrayList<Jelly>();
@@ -96,7 +95,7 @@ public class Game extends JPanel implements KeyListener {
 				for (int h = 0; h < maxX; h += 1) { 
 					for (int k = 0; k < maxY; k += 1) {
 						if (color[h][k] == 16776960) { // 색값이 16776960일 경우 젤리1
-							jellylist.add(new Jelly(mapoimg.jelly1Ic, h * 40 + mapLength * 40, k * 40, 30, 30, 1000));
+							jellylist.add(new Jelly(mapoimg.jelly1Ic, h * 40 + mapLength * 40, k * 40, 30, 30, 500));
 
 						} else if (color[h][k] == 13158400) { // 색값이 13158400일 경우 젤리2
 							jellylist.add(new Jelly(mapoimg.jelly2Ic, h * 40 + mapLength * 40, k * 40, 30, 30, 2000));
@@ -234,7 +233,7 @@ public class Game extends JPanel implements KeyListener {
 		} 
 		
 		//점수 표시
-		buffg.setFont(new Font("SansSerif", Font.BOLD, 30));
+		buffg.setFont(new Font("CookieRun Bold", Font.BOLD, 30));
 		buffg.setColor(Color.WHITE);
 		buffg.drawString(Integer.toString(c.score), 350, 60);
 		//체력 표시 바 위치 나중에 수정!!
