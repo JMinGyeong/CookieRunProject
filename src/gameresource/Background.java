@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.List;
 import javax.swing.*;
 import gameresource.*;
-public class Background extends JFrame implements Runnable {
+public class Background extends JFrame {
 	
 	public Cookie c;
 	public ImageIcon[] map;
@@ -224,11 +224,4 @@ public class Background extends JFrame implements Runnable {
 		}).start();
 	}
 	
-	@Override
-	public void run() {
-		//while(true) {
-			//moveBackground();
-			// hp == 0이 되면 결과화면으로 이동
-		//}
-	}
 }

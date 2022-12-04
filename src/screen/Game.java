@@ -7,8 +7,9 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import gameresource.*;
+import screen.mainScreen;
 public class Game extends JPanel implements KeyListener {
-	public JPanel game;
+	public Screen screen;
 	public Cookie c;
 	public Background b;
 	public ImageIcon jumpUp, jumpDown, slideUp, slideDown;
@@ -21,9 +22,9 @@ public class Game extends JPanel implements KeyListener {
 	AlphaComposite alphaComposite;
 	
 	
-	public Game(int i) { 
-		game = new JPanel();
-		game.setLayout(null);
+	public Game(Screen screen, int i) { 
+		this.screen = screen;
+		this.setLayout(null);
 		
 		ImageIcon[] cimg = new ImageIcon[6];
 		int cspeed = 0;
@@ -160,6 +161,14 @@ public class Game extends JPanel implements KeyListener {
 			public void run() {
 				while(true) {
 					b.moveBackground();
+					if (c.hp <= 0) {
+						screen.score = c.score;
+						screen.gameover = new GameOver(screen);
+						screen.ct.add(screen.gameover,"GameOver");
+						screen.cl.show(screen.ct, "GameOver");
+						screen.gameover.requestFocus();
+						break;
+					}
 					repaint();
 					try {
 						Thread.sleep(10);

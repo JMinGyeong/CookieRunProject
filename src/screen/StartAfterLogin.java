@@ -6,44 +6,46 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import screen.mainScreen;
-public class StartBeforeLogin extends JPanel {
+public class StartAfterLogin extends JPanel {
 	Screen screen;
 	JLabel back;
 	ImageIcon startImg;
-	JButton loginBtn, infoBtn, rankingBtn, exitBtn;
-	public StartBeforeLogin(Screen screen) {
+	JButton gameBtn, infoBtn, rankingBtn, exitBtn;
+	public StartAfterLogin(Screen screen) {
 		this.screen = screen;
 		this.setLayout(null);
 		
+		
 		startImg = new ImageIcon("img/screenimg/StartScreen.png");
-		loginBtn = new JButton("로그인");
+		gameBtn = new JButton("게임시작");
 		infoBtn = new JButton("게임설명");
 		rankingBtn = new JButton("랭킹");
 		exitBtn = new JButton("종료");
 		
-		loginBtn.setBounds(230, 270, 122, 50);
+		gameBtn.setBounds(230, 270, 122, 50);
 		infoBtn.setBounds(430, 270, 122, 50);
 		rankingBtn.setBounds(230, 340, 122, 50);
 		exitBtn.setBounds(430, 340, 122, 50);
 		
-		loginBtn.setBackground(new Color(255,204,051));
+		gameBtn.setBackground(new Color(255,204,051));
 		infoBtn.setBackground(new Color(255,204,051));
 		rankingBtn.setBackground(new Color(255,204,051));
 		exitBtn.setBackground(new Color(255,204,051));
-		loginBtn.setFont(new Font("CookieRun Bold", Font.BOLD, 20));
+		gameBtn.setFont(new Font("CookieRun Bold", Font.BOLD, 20));
 		infoBtn.setFont(new Font("CookieRun Bold", Font.BOLD, 20));
 		rankingBtn.setFont(new Font("CookieRun Bold", Font.BOLD, 20));
 		exitBtn.setFont(new Font("CookieRun Bold", Font.BOLD, 20));
-		loginBtn.setBorderPainted(false);
+		gameBtn.setBorderPainted(false);
 		infoBtn.setBorderPainted(false);
 		rankingBtn.setBorderPainted(false);
 		exitBtn.setBorderPainted(false);
 		
-		loginBtn.addActionListener(new ActionListener() {
+		gameBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				screen.cl.show(screen.ct, "Login");
-				screen.login.requestFocus();
+				screen.cl.show(screen.ct, "Game");
+				screen.game.requestFocus();
+				screen.game.start();
 			}
 		});
 		infoBtn.addActionListener(new ActionListener() {
@@ -67,7 +69,7 @@ public class StartBeforeLogin extends JPanel {
 			}
 		});
 		
-		this.add(loginBtn);
+		this.add(gameBtn);
 		this.add(infoBtn);
 		this.add(rankingBtn);
 		this.add(exitBtn);

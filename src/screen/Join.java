@@ -12,7 +12,7 @@ import screen.*;
 
 public class Join extends JPanel {
 	
-	private JFrame frame;
+	private Screen screen;
 	private JLabel lblJoin;
 	private JButton joinCompleteBtn;
 	private JButton checkOverlapBtn; // 중복확인용 버튼
@@ -28,8 +28,8 @@ public class Join extends JPanel {
 	int xLocation = 230;
 	private DBConnection db = new DBConnection(); // 회원가입용 DB
 
-	public Join(JFrame frame) {
-		this.frame = frame;
+	public Join(Screen screen) {
+		this.screen = screen;
 		this.setLayout(null);
 		Font f1 = new Font("CookieRun Bold", Font.BOLD, 15); 
 		
@@ -132,8 +132,9 @@ public class Join extends JPanel {
 				Member member = new Member(username, password, name, email, phone, createDate);
 				db.insertMember(member);
 				JOptionPane.showMessageDialog(null, "회원 가입이 완료되었습니다.");
-				//dispose();
-				new Login();
+				
+				screen.cl.show(screen.ct, "Login");
+				screen.login.requestFocus();
 			}
 		});
 		
@@ -154,8 +155,8 @@ public class Join extends JPanel {
 		backBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//dispose();
-				new Login();
+				screen.cl.show(screen.ct, "Login");
+				screen.login.requestFocus();
 			}
 		});
 	}

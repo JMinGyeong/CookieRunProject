@@ -1,7 +1,10 @@
 package dbresource;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import dbresource.Member;
+import dbresource.RankInfo;
 
 public class DBConnection {
 	
@@ -82,6 +85,43 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 	}
+	
+	 public RankInfo[] rankInfo(){
+			link();
+			ArrayList<RankInfo> list = new ArrayList<>();
+
+			try {
+				pstmt = conn.prepareStatement("select username, score from member order by score desc limit 10");
+
+				result = pstmt.executeQuery();
+
+				int rowIndex = 0;
+
+				while (result.next()) { 
+					String username = result.getString("username");
+					int score = result.getInt("score");
+					System.out.println("username = " + username);
+					System.out.println("score = " + score);
+					list.add(new RankInfo(username, score));
+					rowIndex++;
+
+				}
+
+				result.close();
+				conn.close();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			RankInfo[] arr = list.stream()
+					.toArray(RankInfo[]::new);
+
+
+			return arr;
+		}
+
 	
 	public boolean login(String username, String password) {
 		link();

@@ -80,6 +80,14 @@ public class Login extends JPanel {
 	
 				String result = (isLogined) ? "로그인 성공" : "로그인 실패";
 				JOptionPane.showMessageDialog(null, result);
+				if (isLogined) {
+					screen.username = id;
+					screen.islogin = true;
+					screen.startafterlogin = new StartAfterLogin(screen);
+					screen.ct.add(screen.startafterlogin,"SAL");
+					screen.cl.show(screen.ct, "SAL");
+					screen.startafterlogin.requestFocus();
+				}
 			}
 		});
 	}
