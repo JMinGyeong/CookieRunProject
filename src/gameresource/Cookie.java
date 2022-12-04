@@ -40,7 +40,7 @@ public class Cookie extends JFrame {
 				jumpcount++;
 				int tmp = jumpcount;
 				if (jumpcount == 1) {
-					targetheight = y - 125;
+					targetheight = y - 140;
 					cookie.setIcon(img[1]);
 				}
 				else if (jumpcount == 2) {

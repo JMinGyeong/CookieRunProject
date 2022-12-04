@@ -145,21 +145,57 @@ public class DBConnection {
 		return flag;
 	}
 	
-	public boolean updateScore(String username, int score) {
-		link();
-		
-		boolean flag = false;
-		try {
-			pstmt = conn.prepareStatement("update member set score = ? where username = ?");
-			pstmt.setInt(1, score);
-			pstmt.setString(2, username);
-			int r = pstmt.executeUpdate();
-			pstmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return flag;
+	public boolean isHighScore(String username, int score){
+		  link();
+		  int originScore = 0;
+		     
+		  try {
+			  pstmt = conn.prepareStatement("select score from member where username = ?");
+			  pstmt.setString(1, username);
+			  result = pstmt.executeQuery();
+
+			  if(result.next()) { //next()함수는 커서를 한칸 내리면서 해당 행에 데이터가 있으면 true, 없으면 false 반환
+				  //결과가 있다는 것은 해당 아이디와 비번에 매칭되는 값이 있다는 뜻.
+				  	originScore = result.getInt("score");
+			  }
+
+			  result.close();
+			  conn.close();
+
+		      } catch (SQLException e) {
+		         // TODO Auto-generated catch block
+		         e.printStackTrace();
+		      }
+		      if(originScore < score){
+		    	  return true;
+		      }
+		      return false;
 	}
 	
+	
+	public void updateScore(String username, int score){
+
+		// 하이스코어가 아닌 경우는 리턴
+		if(isHighScore(username, score) == false){
+			return;
+		}
+		link();
+		try {
+			pstmt = conn.prepareStatement("update member " +
+					"set score = ? " +
+					"where username = ?;");
+			pstmt.setInt(1, score);
+			pstmt.setString(2,  username);
+			pstmt.executeUpdate();
+
+//		         result.close();
+			conn.close();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+		         e.printStackTrace();
+		      }
+
+	}
+
 }
