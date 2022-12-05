@@ -19,7 +19,7 @@ public class Join extends JPanel {
 	private JButton backBtn; // 뒤로가기 버튼
 	
 	private JTextField tfUsername;
-	private JTextField tfPassword;
+	private JPasswordField tfPassword;
 	private JTextField tfName;
 	private JTextField tfEmail;
 	private JTextField tfPhone;
@@ -74,10 +74,10 @@ public class Join extends JPanel {
 		tfUsername.setColumns(10);
 		tfUsername.setBounds(350, 106, 186, 35);
 		this.add(tfUsername);
-		
-		tfPassword = new JTextField();
+		tfPassword = new JPasswordField();
 		tfPassword.setColumns(10);
 		tfPassword.setBounds(350, 156, 186, 35);
+		tfPassword.setEchoChar('*');
 		this.add(tfPassword);
 		
 		tfName = new JTextField();

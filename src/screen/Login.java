@@ -9,7 +9,8 @@ import screen.*;
 public class Login extends JPanel {
 	
 	private Screen screen;
-	private JTextField tfUsername, tfPassword;
+	private JTextField tfUsername;
+	private JPasswordField tfPassword;
 	private JButton loginBtn, joinBtn;
 	private ImageIcon background=new ImageIcon("img/screenimg/StartScreen2.png");
 	private DBConnection db = new DBConnection(); // 회원가입용 DB
@@ -55,9 +56,10 @@ public class Login extends JPanel {
 		joinBtn.setBorderPainted(false);
 		this.add(joinBtn);
 		
-		tfPassword = new JTextField();
+		tfPassword = new JPasswordField(10);
 		tfPassword.setColumns(10);
 		tfPassword.setBounds(350, 230, 176, 35);
+		tfPassword.setEchoChar('*');
 		this.add(tfPassword);
 		
 		//회원가입 액션
