@@ -31,7 +31,7 @@ public class Background extends JFrame {
 	}
 	
 	public void moveBackground() {
-		if (count >= 500) {
+		if (count >= 250) {
 			c.hp -= 10;
 			count = 0;
 		}
@@ -68,7 +68,7 @@ public class Background extends JFrame {
 					now = temp.y;
 			}
 		}
-		if (c.y+c.h < now && !c.jump && !c.slide && !c.fall)
+		if (c.y+c.h < now && !c.jump && !c.fall)
 			fall(now);
 			//발판에 도달할 때까지 fall
 		
@@ -157,12 +157,12 @@ public class Background extends JFrame {
 					if (c.jumpcount == 2) 
 						c.cookie.setIcon(c.img[4]);
 					while (c.h + c.y < now) { 
-						if (c.y + c.h + 5 >= now) { 
+						if (c.y + c.h + 6 >= now) { 
 							int temp = now - c.y - c.h;
 							c.y += temp;
 						}
 						else
-							c.y += 5;
+							c.y += 6;
 						for (int i = 0; i < 5; i++) {
 							Field temp = fieldlist.get(i);
 							if (temp.x > c.x - 60 && temp.x <= c.x+c.w) { 
@@ -190,6 +190,7 @@ public class Background extends JFrame {
 					
 					if (!c.jump) 
 						c.jumpcount = 0;
+					
 				try {
 					Thread.sleep(10);
 				} catch (InterruptedException e) {

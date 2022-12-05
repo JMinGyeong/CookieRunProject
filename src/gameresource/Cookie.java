@@ -44,7 +44,7 @@ public class Cookie extends JFrame {
 					cookie.setIcon(img[1]);
 				}
 				else if (jumpcount == 2) {
-					targetheight = y - 125;
+					targetheight = y - 120;
 					cookie.setIcon(img[2]);
 				}
 				while (y >= targetheight) { // 목표 높이에 도달할 때 까지

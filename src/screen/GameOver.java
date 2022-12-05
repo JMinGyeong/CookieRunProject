@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import dbresource.DBConnection;
 import screen.Ranking;
+import screen.Game;
 public class GameOver extends JPanel{
 	Screen screen;
 	private ImageIcon image = new ImageIcon("img/screenimg/OverScreen.png");
@@ -27,6 +28,10 @@ public class GameOver extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				screen.cl.show(screen.ct, "Ranking");
 				screen.rank.requestFocus();
+
+				screen.ct.remove(screen.game);
+				screen.game = new Game(screen,0);
+				screen.ct.add(screen.game,"Game");
 			}
 		});
 		
@@ -44,8 +49,7 @@ public class GameOver extends JPanel{
 		screen.ct.remove(screen.rank);
 		screen.rank = new Ranking(screen);
 		screen.ct.add(screen.rank,"Ranking");
-		screen.cl.show(screen.ct, "Ranking");
-		screen.startafterlogin.requestFocus();
+		
 	}
 	public void paintComponent(Graphics g) {
 		g.drawImage(image.getImage(), 0, 0, null);
