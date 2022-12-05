@@ -4,4 +4,5 @@
 #### 또한 MYSQL에 기본 설정이 되있어야 하며 자세한 사항은 카톡으로 문의해 주세요 </br>
 #### 리소스와 코드는 https://github.com/jaybon1/cookierun 를 참고하였습니다. </br>
 ##### +12/3: Screen 수정 및 추가됨,  DBConnection 클래스에 updateScore 메소드 추가됨, 각 screen 생성자 수정하고 eventlistener 추가해야 함
-##### +12/4 : UI수정 및 Ranking 추가됨. 맵 이미지 수정해야 함
+##### +12/4: UI수정 및 Ranking 추가됨. 맵 이미지 수정해야 함
+##### +12/5: 버그 픽스 및 맵 수정 
