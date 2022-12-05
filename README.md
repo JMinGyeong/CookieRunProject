@@ -6,3 +6,4 @@
 ##### +12/3: Screen 수정 및 추가됨,  DBConnection 클래스에 updateScore 메소드 추가됨, 각 screen 생성자 수정하고 eventlistener 추가해야 함
 ##### +12/4: UI수정 및 Ranking 추가됨. 맵 이미지 수정해야 함
 ##### +12/5: 버그 픽스 및 맵 수정 
+##### +12/6: 비밀번호 별 표시 
